@@ -1,4 +1,10 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
+/**
+ * プロパティに対する型チェックを行う
+ */
 
 // 関数コンポーネント
 
@@ -14,6 +20,7 @@ function App() {
     },
     {
       name: "tanaka",
+      age: 1,
     }
   ]
 
@@ -49,8 +56,14 @@ function User(props) {
 }
 
 // User のデフォルト値を定義
-User.defaultProps = {
-  age: 1
+// User.defaultProps = {
+//   age: 1
+// }
+
+// User の型を定義
+User.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired,
 }
 
 // クラスコンポーネント
