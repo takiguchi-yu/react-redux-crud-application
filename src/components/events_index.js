@@ -11,19 +11,18 @@ import { Link } from 'react-router-dom'
  */
 
 class EventsIndex extends Component {
+
+  // コンポーネントのマウント直後に呼ばれます
   componentDidMount(){
-    console.log("コンポーネントのマウント直後に呼ばれます")
     this.props.readEvents()
-  }
-  componentDidUpdate(){
-    console.log("コンポーネントがアップデートされた後に呼ばれます")
   }
 
   renderEvents() {
     return _.map(this.props.events, event => (
-      <tr key={event.id}>
-        <td>{event.id}</td>
-        <td>{event.title}</td>
+      <tr key={ event.id }>
+        <td>{ event.id }</td>
+        <td>
+          <Link to={ `/events/${event.id}` }>{ event.title }</Link></td>
         <td>{event.body}</td>
       </tr>
     ))
@@ -37,11 +36,11 @@ class EventsIndex extends Component {
             <tr>
               <th>ID</th>
               <th>Title</th>
-              <th>BOdy</th>
+              <th>Body</th>
             </tr>
           </thead>
           <tbody>
-            {this.renderEvents()}
+            { this.renderEvents() }
           </tbody>
         </table>
         <Link to="/events/new">New Event</Link>
